@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
+
 namespace GUI_V_2
 {
     public partial class Form1 : Form
@@ -87,6 +88,49 @@ namespace GUI_V_2
         private void Form1_Load(object sender, EventArgs e)
         {
             btnlogoInicio_Click(null,e);
+        }
+
+        private void BarraTitulo_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void MenuVertical_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form formulario = new Agregar();
+            formulario.Show();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelContenedor_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Form formulario = new Form2();
+            formulario.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form formulario = new Ayuda();
+            formulario.Show();
         }
     }
 }

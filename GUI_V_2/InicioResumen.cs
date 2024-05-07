@@ -22,5 +22,15 @@ namespace GUI_V_2
             lblhora.Text = DateTime.Now.ToString("hh:mm:ss ");
             lblFecha.Text = DateTime.Now.ToLongDateString();
         }
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void InicioResumen_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
