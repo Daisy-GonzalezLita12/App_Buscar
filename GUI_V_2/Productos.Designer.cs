@@ -36,15 +36,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.boton_buscar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Croquis = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Descargar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.textbox_apm = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textbox_App = new System.Windows.Forms.TextBox();
-            this.Descargar = new System.Windows.Forms.Button();
-            this.Croquis = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.botonConexion = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -120,6 +121,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.botonConexion);
             this.panel1.Controls.Add(this.Croquis);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.Descargar);
@@ -137,6 +139,17 @@
             this.panel1.Size = new System.Drawing.Size(829, 533);
             this.panel1.TabIndex = 13;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // Croquis
+            // 
+            this.Croquis.BackColor = System.Drawing.Color.Salmon;
+            this.Croquis.Location = new System.Drawing.Point(0, 482);
+            this.Croquis.Name = "Croquis";
+            this.Croquis.Size = new System.Drawing.Size(131, 48);
+            this.Croquis.TabIndex = 15;
+            this.Croquis.Text = "Descargar croquis del Tec ";
+            this.Croquis.UseVisualStyleBackColor = false;
+            this.Croquis.Click += new System.EventHandler(this.Croquis_Click_1);
             // 
             // groupBox1
             // 
@@ -157,6 +170,17 @@
             this.dataGridView1.Size = new System.Drawing.Size(522, 453);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Descargar
+            // 
+            this.Descargar.BackColor = System.Drawing.Color.PaleVioletRed;
+            this.Descargar.Location = new System.Drawing.Point(666, 482);
+            this.Descargar.Name = "Descargar";
+            this.Descargar.Size = new System.Drawing.Size(132, 48);
+            this.Descargar.TabIndex = 12;
+            this.Descargar.Text = "Descargar horario ";
+            this.Descargar.UseVisualStyleBackColor = false;
+            this.Descargar.Click += new System.EventHandler(this.Descargar_Click);
             // 
             // label4
             // 
@@ -196,28 +220,6 @@
             this.textbox_App.Size = new System.Drawing.Size(154, 24);
             this.textbox_App.TabIndex = 10;
             // 
-            // Descargar
-            // 
-            this.Descargar.BackColor = System.Drawing.Color.PaleVioletRed;
-            this.Descargar.Location = new System.Drawing.Point(666, 482);
-            this.Descargar.Name = "Descargar";
-            this.Descargar.Size = new System.Drawing.Size(132, 48);
-            this.Descargar.TabIndex = 12;
-            this.Descargar.Text = "Descargar horario ";
-            this.Descargar.UseVisualStyleBackColor = false;
-            this.Descargar.Click += new System.EventHandler(this.Descargar_Click);
-            // 
-            // Croquis
-            // 
-            this.Croquis.BackColor = System.Drawing.Color.Salmon;
-            this.Croquis.Location = new System.Drawing.Point(0, 482);
-            this.Croquis.Name = "Croquis";
-            this.Croquis.Size = new System.Drawing.Size(131, 48);
-            this.Croquis.TabIndex = 15;
-            this.Croquis.Text = "Descargar croquis del Tec ";
-            this.Croquis.UseVisualStyleBackColor = false;
-            this.Croquis.Click += new System.EventHandler(this.Croquis_Click_1);
-            // 
             // panel2
             // 
             this.panel2.Location = new System.Drawing.Point(295, 382);
@@ -225,6 +227,17 @@
             this.panel2.Size = new System.Drawing.Size(576, 212);
             this.panel2.TabIndex = 14;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // botonConexion
+            // 
+            this.botonConexion.BackColor = System.Drawing.Color.RosyBrown;
+            this.botonConexion.Location = new System.Drawing.Point(0, 370);
+            this.botonConexion.Name = "botonConexion";
+            this.botonConexion.Size = new System.Drawing.Size(174, 23);
+            this.botonConexion.TabIndex = 15;
+            this.botonConexion.Text = "Conectar a base de datos";
+            this.botonConexion.UseVisualStyleBackColor = false;
+            this.botonConexion.Click += new System.EventHandler(this.botonConexion_Click);
             // 
             // Productos
             // 
@@ -264,5 +277,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button botonConexion;
     }
 }

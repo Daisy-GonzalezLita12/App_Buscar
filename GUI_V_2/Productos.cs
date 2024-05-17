@@ -32,7 +32,33 @@ namespace GUI_V_2
         static string conexion = "SERVER =  127.0.0.1; PORT=3306;DATABASE= buscando_dentro_del_tec;UID=root;PASSWORDS=;";
         MySqlConnection cn =new MySqlConnection(conexion);
 
-        
+        public void LoadData()
+        {
+            string connectionString = "Server=127.0.0.1;Database=buscando_dentro_del_tec;Uid=root;Pwd=;";
+            MySqlConnection connection = new MySqlConnection(connectionString);
+
+            try
+            {
+                connection.Open();
+                string query = "SELECT * FROM persona;";
+              //  string query = "SELECT * FROM horario WHERE ID_HORARIO = 1 ";
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                dataGridView1.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+   
+
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -55,7 +81,10 @@ namespace GUI_V_2
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            dataGridView1.DataSource = lleanar_grid();
+            //dataGridView1.DataSource = lleanar_grid();
+
+            //dataGridView1.DataSource = LoadData();
+         LoadData();
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -109,7 +138,7 @@ namespace GUI_V_2
         public DataTable lleanar_grid() {
             cn.Open();
             DataTable dt=new DataTable();
-            String llenar = "select* from persona";
+            string llenar = "select* from persona";
             MySqlCommand cdm = new MySqlCommand(llenar, cn);
             MySqlDataAdapter da= new MySqlDataAdapter(cdm); 
             da.Fill(dt);
@@ -125,6 +154,28 @@ namespace GUI_V_2
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void botonConexion_Click(object sender, EventArgs e)
+        {
+       
+                string connectionString = "Server=127.0.0.1;Database=buscando_dentro_del_tec;Uid=root;Pwd=;";
+                MySqlConnection connection = new MySqlConnection(connectionString);
+
+                try
+                {
+                    connection.Open();
+                    MessageBox.Show("Conexión exitosa a la base de datos");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al conectar a la base de datos: " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            
         }
     }
 }
