@@ -41,7 +41,7 @@ namespace GUI_V_2
             {
                 connection.Open();
                 string query = "SELECT * FROM persona;";
-              //  string query = "SELECT * FROM horario WHERE ID_HORARIO = 1 ";
+              
                 MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
@@ -81,7 +81,7 @@ namespace GUI_V_2
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            //dataGridView1.DataSource = lleanar_grid();
+            //dataGridView1.DataSource = llenar_grid();
 
             //dataGridView1.DataSource = LoadData();
          LoadData();
@@ -99,7 +99,7 @@ namespace GUI_V_2
 
         private void button3_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(new Horario());
+            dataGridView1.DataSource = llenar_grid();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -135,15 +135,17 @@ namespace GUI_V_2
         {
 
         }
-        public DataTable lleanar_grid() {
+        public DataTable llenar_grid() {
             cn.Open();
             DataTable dt=new DataTable();
-            string llenar = "select* from persona";
+            string llenar = "SELECT * FROM `horario` WHERE`Id_horario`=5";
             MySqlCommand cdm = new MySqlCommand(llenar, cn);
-            MySqlDataAdapter da= new MySqlDataAdapter(cdm); 
+            MySqlDataAdapter da= new MySqlDataAdapter(cdm);
+            //MessageBox.Show("Los datos fueron encontrados con exito");
             da.Fill(dt);
             cn.Close();
-            return dt;  
+            return dt;
+            
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -177,5 +179,64 @@ namespace GUI_V_2
                 }
             
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            cn.Open();
+
+            string insertar = "INSERT INTO persona(Id_persona, ID_HORARIO,Nombre, Apellido_p, Apellido_m)values(@Id_persona, @ID_HORARIO,@Nombre, @Apellido_p, @Apellido_m)";
+            MySqlCommand cmd=new MySqlCommand(insertar, cn);
+
+            
+            cmd.Parameters.AddWithValue("@ID_persona", ID.Text);
+            cmd.Parameters.AddWithValue("@Nombre", name.Text);
+            cmd.Parameters.AddWithValue("@Apellido_p", apellido_p.Text);
+            cmd.Parameters.AddWithValue("@Apellido_m", apellido_m.Text);
+        
+          cn.Close();
+            MessageBox.Show("Los datos fueron agregados con éxito");
+            LoadData();
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void boton_Eliminar_Click(object sender, EventArgs e)
+        {
+            cn.Open();
+
+            string eliminar = "DELETE from personas WHERE ID=@Id_persona";
+
+            MySqlCommand cdm = new MySqlCommand(eliminar, cn);
+            cdm.Parameters.AddWithValue("@ID", ID.Text);
+            cn.Close();
+            MessageBox.Show("Los datos fueron eliminados con éxito");
+            LoadData();
+        }
+
+        private void boton_Actualizar_Click(object sender, EventArgs e)
+        {
+            cn.Open();
+            string actualizar = "UPDATE persona SET ID_persona=@ID, Nombre=@name, Apellido_p=@apellido_p, Apellido_m=@apellido_m WHERE ID_persona=@ID";
+            MySqlCommand cmd2 = new MySqlCommand(actualizar, cn);
+            cmd2.Parameters.AddWithValue("@ID", ID.Text);
+            cmd2.Parameters.AddWithValue("@name", name.Text);
+            cmd2.Parameters.AddWithValue("@apellido_p", apellido_p.Text);
+            cmd2.Parameters.AddWithValue("@apellido_m", apellido_m.Text);
+            MessageBox.Show("Los datos fueron actualizados con éxito");
+            LoadData();
+            cn.Close();
+          
+        }
     }
+
+    
 }
